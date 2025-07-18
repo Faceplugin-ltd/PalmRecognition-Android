@@ -1,0 +1,10 @@
+<resources>
+  <string name="app_name">Palm Recognition</string>
+  <string name="enrolled_face">Enrolled Palms</string>
+  <string name="start">Palm Recognition</string>
+  <string name="select_picture">Select Picture</string>
+  <string name="no_face_detected">No Palm!</string>
+  <string name="multiple_face_detected">Multiple Palms!</string>
+  <string name="duplicate_person">Duplicate palm!</string>
+  <string name="person_enrolled">Palm enrolled!</string>
+</resources>
