@@ -73,12 +73,16 @@ class MainActivity : AppCompatActivity() {
   }
 
   fun setupFaceSDK() {
+    val activate_res = PalmEngine.createInstance(this).FacepluginPalm_activate("YPYMY3xUHJbJBuNWEuNiLf53HsoCF0J4IDHiEJbBDNHYZDtICtfjO0DCEDpPCNHiCtbkYDfiEeqdzi+tziudzMJ0JMV6BOYjYC5pBtxpEo8ml2HQNN9ImIM=")
+    if (activate_res < 0) {
+      Toast.makeText(this, "Engine Activation Failed !", Toast.LENGTH_SHORT).show()
+    }
+
     val init_res = PalmEngine.createInstance(this).FacepluginPalm_init()
     if (init_res < 0) {
       Toast.makeText(this, "Engine Init Failed !", Toast.LENGTH_SHORT).show()
     }
   }
-
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
@@ -86,8 +90,7 @@ class MainActivity : AppCompatActivity() {
       try {
         var bitmap: Bitmap = Utils.getCorrectlyOrientedImage(this, data?.data!!)
 
-        val faceResults: List<PalmResult> =
-          PalmEngine.getInstance().FacepluginPalm_detect(bitmap)
+        val faceResults: List<PalmResult> = PalmEngine.getInstance().FacepluginPalm_detect(bitmap)
 
         if (faceResults.isNullOrEmpty()) {
           Toast.makeText(this, getString(R.string.no_face_detected), Toast.LENGTH_SHORT)
